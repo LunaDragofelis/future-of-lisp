@@ -1,0 +1,27 @@
+defvar origin String;
+defvar destination String;
+defvar input (IOSourceStream Byte);
+defvar output (IOTargetStream Byte);
+
+import Resource::close;
+
+try {
+	losd-sysargs-into argv;
+	
+	set origin (index 0 argv);
+	set destination (index 1 argv);
+
+	set input (new (IOSourceStream Byte) (new FileReference origin));
+	set output (new (IOTargetStream Byte) (new FileReference destination));
+
+	while (input::hasMore) {
+		localvar theByte Byte;
+		set theByte (input::next);
+		set (output::next) theByte;
+	};
+} catch (err) {
+	printerrline err;
+} finally {
+	close input;
+	close output;
+};

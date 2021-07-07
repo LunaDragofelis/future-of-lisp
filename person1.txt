@@ -1,0 +1,13 @@
+(defrecord Person {
+	name String;
+	age (RangedInt 0 150);
+	hobbies (List String);
+});
+
+defvar luna Person down;
+
+set luna (new Person "Luna" 21 [list "Programming" "Fortnite" "Music"]);
+
+List::add (Person::hobbies luna) "Cats";
+
+printline (Person::name luna);

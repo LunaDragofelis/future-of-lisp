@@ -1,0 +1,11 @@
+defmacro multivars ((expr ListExpression)) {
+	localvar varnames (List Symbol);
+	localvar exprsize Int;
+	set exprsize (length expr);
+	set varnames (subrange 2 (- exprsize 2) (map SymbolExpr::getSymbol expr));
+	set typename (last expr);
+	set vartype (second expr);
+	localvar varexprs ListExpression;
+	set varexprs (map fn (varname) `(,vartype ,varname ,typename)); 
+	return `(do ,@varexprs);
+};

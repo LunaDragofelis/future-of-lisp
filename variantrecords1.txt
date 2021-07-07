@@ -1,0 +1,45 @@
+defrecord Vehicle {
+	
+	wheeled Bool;
+	
+	when wheeled {
+		wheelcount PositiveInt;
+		localvar wheelindex UInt 0;
+		loop {
+			wheel Wheel;
+			incr wheelindex;
+			unless (< wheelindex wheelcount) (break);
+		};
+		
+		carries-passengers Boolean;
+		
+		if carries-passengers {
+			seated-passengers UInt;
+			standing-passengers UInt;
+			
+			dotimes seated-passengers {
+				seat Seat;
+			};
+		}
+	}
+};
+
+defrecord Wheel {
+	diameter Float;
+	material WheelMaterial;
+}
+
+enum WheelMaterial Rubber Wood Steel Plastic;
+
+defrecord Seat;
+
+def Vehicle::total-passengers (vehicle) {
+	return (+ (vehicle::seated-passengers) (vehicle::standing-passengers));
+};
+
+defrecord CString {
+	loop {
+		char Byte;
+		if (= char 0) (break);
+	};
+}
