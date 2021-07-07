@@ -27,7 +27,7 @@ defrecord Vehicle {
 defrecord Wheel {
 	diameter Float;
 	material WheelMaterial;
-}
+};
 
 enum WheelMaterial Rubber Wood Steel Plastic;
 
