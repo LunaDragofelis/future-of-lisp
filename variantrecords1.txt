@@ -42,4 +42,4 @@ defrecord CString {
 		char Byte;
 		if (= char 0) (break);
 	};
-}
+};
