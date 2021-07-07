@@ -6,7 +6,7 @@ defvar output (IOTargetStream Byte);
 import Resource::close;
 
 try {
-	losd-sysargs-into argv;
+	load-sysargs-into argv;
 	
 	set origin (index 0 argv);
 	set destination (index 1 argv);
