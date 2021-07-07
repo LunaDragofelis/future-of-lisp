@@ -1,8 +1,8 @@
-(defrecord Person {
+defrecord Person {
 	name String;
 	age (RangedInt 0 150);
 	hobbies (List String);
-});
+};
 
 defvar luna Person down;
 
