@@ -1,0 +1,33 @@
+// Java code for comparison
+public class MyWindow extends JFrame {
+	JLabel output;
+	JTextField input;
+	public MyWindow() {
+		output = new JLabel();
+		JButton button = new JButton("Update Text");
+		input = new JTextField();
+		button.addActionListener(e -> updateText());
+		Container contentPane = this.getContentPane();
+	 contentPane.add(output, BorderLayout.NORTH);
+		contentPane.add(input, BorderLayout.CENTER);
+		contentPane.add(button, BorderLayout.SOUTH);
+		this.setVisible(true);
+	}
+
+	public void updateText() {
+		output.setText(input.getText());
+	}
+}
+
+# code of my language
+defview MyWindow {
+	BorderPane _ {
+		north output Label;
+		center input TextField;
+		south _ Button updateText;
+	};
+
+	def updateText (event) {
+		set (output::text) (input::text);
+	};
+};
