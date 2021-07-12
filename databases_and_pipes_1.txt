@@ -1,0 +1,22 @@
+def sum-up-male-ages ((stream-of-people (Stream Person))) {
+	return stream-of-people::filter (fn (p) (= (p::gender) Gender::Male)) | map Person::age | sum | orElse 0;
+};
+
+defrecord Person {
+	name String;
+	age UInt8;
+	gender Gender;
+};
+
+defenum Gender [Male; Female; Nonbinary];
+
+database::connectTypes Person Gender;
+
+defvar db Database;
+defvar result UInt;
+
+set db (Database::connect #(insert database connection code here)#);
+
+set result (db::table "person" Person | stream | sum-up-male-ages | toString);
+
+String::format "The sum of all mens' ages in the database is %d." result | stdout::printLine;
