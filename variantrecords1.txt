@@ -2,7 +2,7 @@ defrecord Vehicle {
 	
 	wheeled Bool;
 	
-	when wheeled {
+	if wheeled {
 		wheelcount PositiveInt;
 		localvar wheelindex UInt 0;
 		loop {
