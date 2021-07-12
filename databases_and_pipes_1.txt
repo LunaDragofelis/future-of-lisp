@@ -1,5 +1,5 @@
 def sum-up-male-ages ((stream-of-people (Stream Person))) {
-	return stream-of-people::filter (fn (p) (= (p::gender) Gender::Male)) | map Person::age | sum | orElse 0;
+	return (stream-of-people::filter (fn (p) (= (p::gender) Gender::Male)) | map Person::age | sum | orElse 0);
 };
 
 defrecord Person {
